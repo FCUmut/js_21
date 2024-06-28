@@ -8,6 +8,10 @@ const port = 5000;
 
 const app = express();
 
+// Body parser middleware // it used to be in npm install bodyparser, in express v5 it included
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // request and callback
 app.get("/", (req, res) => {
   //   res.send("Hello World"); // text/html
