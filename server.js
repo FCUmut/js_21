@@ -4,7 +4,13 @@
 // npm i -D nodemon // with nodemon, now you don't have to reset powershell again and again, it will listen server.js
 
 const express = require("express");
-const port = 5000;
+require("dotenv").config();
+// const port = 5000;
+const port = process.env.PORT || 5000;
+// npm run dev
+
+const connectDB = require("./config/db.js");
+connectDB();
 
 const app = express();
 
