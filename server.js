@@ -3,6 +3,7 @@
 // npm install -g npm@10.8.1  // update
 // npm i -D nodemon // with nodemon, now you don't have to reset powershell again and again, it will listen server.js
 
+const path = require("path");
 const express = require("express");
 require("dotenv").config();
 // const port = 5000;
@@ -13,6 +14,9 @@ const connectDB = require("./config/db.js");
 connectDB();
 
 const app = express();
+
+// Static Folder
+app.use(express.static(path.join(__dirname, "public")));
 
 // Body parser middleware // it used to be in npm install bodyparser, in express v5 it included
 app.use(express.json());
