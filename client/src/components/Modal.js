@@ -9,6 +9,7 @@ class Modal {
     this._modalBtn.addEventListener("click", this.open.bind(this));
     // '.bind(this)' binds the event listener of the function to the current class, then when you use this pointer inside of the function, the this pointer refer to encapsulated class and you can access to its members.
     window.addEventListener("click", this.outsideClick.bind(this));
+    document.addEventListener("closemodal", () => this.close()); // dispatch comes from IdeaForm
   }
 
   open() {
