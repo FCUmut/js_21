@@ -1,6 +1,7 @@
 import "@fortawesome/fontawesome-free/css/all.css";
 import Modal from "./components/Modal.js";
 import IdeaForm from "./components/IdeaForm.js";
+import IdeaList from "./components/IdeaList.js";
 import "./css/style.css";
 
 // npm i @fortawesome/fontawesome-free
@@ -11,7 +12,9 @@ import "./css/style.css";
 
 const modal = new Modal();
 const ideaForm = new IdeaForm();
+const ideaList = new IdeaList();
 ideaForm.render();
+ideaList.render();
 
 // function open() {
 //   modal.style.display = "block";
