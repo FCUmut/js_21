@@ -6,6 +6,9 @@
 const path = require("path");
 const express = require("express");
 require("dotenv").config();
+
+const cors = require("cors");
+
 // const port = 5000;
 const port = process.env.PORT || 5000;
 // npm run dev
@@ -21,6 +24,14 @@ app.use(express.static(path.join(__dirname, "public")));
 // Body parser middleware // it used to be in npm install bodyparser, in express v5 it included
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// cors middleware
+app.use(
+  cors({
+    origin: ["http://localhost:5000", "http://localhost:3000"],
+    credentials: true,
+  })
+);
 
 // request and callback
 app.get("/", (req, res) => {
