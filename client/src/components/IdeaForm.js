@@ -1,6 +1,11 @@
+import IdeasApi from "../services/ideasApi.js";
+import IdeaList from "./IdeaList.js";
+import IdeasList from "./IdeaList.js";
+
 class IdeaForm {
   constructor() {
     this._formModal = document.querySelector("#form-modal");
+    this._ideaList = new IdeaList();
   }
 
   addEventListeners() {
@@ -28,7 +33,7 @@ class IdeaForm {
     this.addEventListeners(); // since it try to listen events before render(), thats why it returns null so we carried them into render()
   }
 
-  handleSubmit(e) {
+  async handleSubmit(e) {
     e.preventDefault();
 
     const idea = {
@@ -37,7 +42,12 @@ class IdeaForm {
       username: this._form.elements.username.value,
     };
 
-    console.log(idea);
+    // console.log(idea);
+    // Add idea to server
+    const newIdea = await IdeasApi.createIdea(idea);
+
+    // Add idea to List
+    this._ideaList.addIdeaToList(newIdea.data.data);
 
     // Clear fields
     this._form.elements.text.value = "";

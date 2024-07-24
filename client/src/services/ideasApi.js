@@ -9,6 +9,10 @@ class IdeasApi {
   }
   // ctrl + c to shutdown webpack dev server
   // npm i axios
+
+  createIdea(data) {
+    return axios.post(this._apiUrl, data);
+  }
 }
 
 export default new IdeasApi();
